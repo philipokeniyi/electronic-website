@@ -356,6 +356,11 @@ li:nth-child(1):hover {
     border-radius: 10px;
   }
 }
+@media (max-width: 800px) {
+  .home-image img {
+    animation: none;
+  }
+}
 /* ************ partners ************** */
 
 .partners-container {
@@ -954,6 +959,11 @@ li:nth-child(1):hover {
   }
 }
 
+@media (max-width: 350px) {
+  .my-team {
+    min-width: 200px;
+  }
+}
 /* ******* Pricing ******** */
 .pricing {
   width: 100%;
@@ -989,7 +999,7 @@ li:nth-child(1):hover {
 
 .pricing-container {
   flex: 1 1 300px;
-  min-width: 300px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1099,6 +1109,12 @@ li:nth-child(1):hover {
   }
 }
 
+@media (max-width: 300px) {
+  .pricing-container {
+    flex: 1 1 100px;
+    min-width: 200px;
+  }
+}
 /* testimonial */
 
 .testimonials {
@@ -1302,6 +1318,18 @@ span.prevTestimony:hover {
   .testimonials > p {
     font-size: 1.1rem;
     text-align: center;
+  }
+}
+@media (max-width: 300px) {
+  span.nextTestimony {
+    right: 10px;
+  }
+  span.prevTestimony {
+    left: 10px;
+  }
+  .all-testimony-container {
+    width: 90%;
+    height: 520px;
   }
 }
 
@@ -1765,9 +1793,6 @@ footer {
   }
 }
 
-
-
-
 .scroll-content-1 {
   opacity: 0; /* Initially hidden */
   transform: scale(1.1); /* Initially scaled up */
@@ -1779,9 +1804,7 @@ footer {
   transform: scale(1); /* Scale down to normal size */
 }
 
-
 .scroll-content-2 {
- 
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -1810,4 +1833,22 @@ footer {
 }
 #sc-2-delay-5.show {
   transition-delay: 2.5s;
+}
+
+@media (max-width: 800px) {
+  .scroll-content-1,
+  .scroll-content-2 {
+    opacity: 1; /* Ensure elements are visible */
+    transform: none; /* Remove scaling and translation */
+    transition: none; /* Disable animations */
+  }
+
+  /* Optional: If you also want to prevent the delays */
+  #sc-2-delay-1.show,
+  #sc-2-delay-2.show,
+  #sc-2-delay-3.show,
+  #sc-2-delay-4.show,
+  #sc-2-delay-5.show {
+    transition-delay: 0; /* Remove delay */
+  }
 }
