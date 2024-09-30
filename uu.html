@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <title>Image Slider</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100%;
+        /* min-height: 100vh; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+      }
+      .all-testimony-container {
+        position: relative;
+        width: 800px;
+        height: 400px;
+        border: 3px solid #ffb300;
+      }
+      .all-testimony-container .testimony-container {
+        width: 100%;
+        height: calc(100% - 40px);
+        position: relative;
+        overflow: hidden;
+      }
+      .all-testimony-container .testimony-container .my-customer-testimony {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: cover;
+      }
+
+      .my-customer-testimony {
+        flex: 0 0 100%; /* Each testimonial will take up 100% width */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        background-color: #00712d;
+      }
+      .all-testimony-container
+        .testimony-container
+        .my-customer-testimony:not(.activeTestimony) {
+        top: 0;
+        left: -100%;
+      }
+      span.nextTestimony,
+      span.prevTestimony {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 14px;
+        color: #3b3737;
+        font-size: 24px;
+        font-weight: bold;
+        transition: 0.5s;
+        border-radius: 3px;
+        user-select: none;
+        cursor: pointer;
+        z-index: 1;
+      }
+      span.nextTestimony {
+        right: 20px;
+      }
+      span.prevTestimony {
+        left: 20px;
+      }
+      span.nextTestimony:hover,
+      span.prevTestimony:hover {
+        background-color: #ede6d6;
+        opacity: 0.8;
+        color: #222;
+      }
+      .dotsQContainer {
+        position: absolute;
+        bottom: 10px;
+        z-index: 3;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .dotsQContainer .dotTestimony {
+        width: 15px;
+        height: 15px;
+        margin: 0px 2px;
+        background-color: #d6d0d0;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: background-color 0.6s ease;
+      }
+      .dotsQContainer .activeTestimony {
+        background-color: #00712d;
+      }
+
+      .testimony-image img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .customers-testi-details {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.7rem;
+        text-align: center;
+        color: #070707;
+      }
+
+      .customers-testi-details p {
+        margin: 0;
+      }
+      .customers-testi-details p:nth-child(1) {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #00712d;
+      }
+      .customers-testi-details p:nth-child(3) {
+        font-size: 1.2rem;
+        
+        color: #ffc107;
+      }
+
+      .customers-testi-details q {
+        font-style: italic;
+        color: #000000;
+        margin-top: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      @keyframes nextQ1 {
+        from {
+          left: 0%;
+        }
+        to {
+          left: -100%;
+        }
+      }
+      @keyframes nextQ2 {
+        from {
+          left: 100%;
+        }
+        to {
+          left: 0%;
+        }
+      }
+
+      @keyframes prevQ1 {
+        from {
+          left: 0%;
+        }
+        to {
+          left: 100%;
+        }
+      }
+      @keyframes prevQ2 {
+        from {
+          left: -100%;
+        }
+        to {
+          left: 0%;
+        }
+      }
+
+      @media (max-width: 650px) {
+        .all-testimony-container {
+          width: 800px;
+          height: 450px;
+        }
+        .my-customer-testimony {
+          padding: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="all-testimony-container">
+      <div class="testimony-container">
+        <div class="my-customer-testimony activeTestimony">
+          <div class="testimony-image">
+            <img src="images/tes Timothy Glover1.jpg" alt="" />
+          </div>
+          <div class="customers-testi-details">
+            <p>Alex P</p>
+            <p>House consultant</p>
+            <p>
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
+            </p>
+            <p>
+              <q
+                >PoTech made it so easy to find exactly what I needed. Their
+                selection is incredible, and I received my order in just two
+                days!</q
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="my-customer-testimony">
+          <div class="testimony-image">
+            <img src="images/tes Alma  Erikson1.jpg" alt="" />
+          </div>
+          <div class="customers-testi-details">
+            <p>Megan T</p>
+            <p>House consultant</p>
+            <p>
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
+            </p>
+            <p>
+              <q
+                >I've bought several gadgets from PoTech, and I'm always
+                impressed with their quality and service. Highly recommended!</q
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="my-customer-testimony">
+          <div class="testimony-image">
+            <img src="images/tes Angelica Tucker1.jpg" alt="" />
+          </div>
+          <div class="customers-testi-details">
+            <p>Tina M</p>
+            <p>Marketing</p>
+            <p>
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
+            </p>
+            <p>
+              <q
+                >I love shopping at PoTech! They offer the latest tech at
+                unbeatable prices, and their fast shipping is a huge plus.</q
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="my-customer-testimony">
+          <div class="testimony-image">
+            <img src="images/tes George  Welch1.jpg" alt="" />
+          </div>
+          <div class="customers-testi-details">
+            <p>Carlos G</p>
+            <p>Entrepreneur</p>
+            <p>
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
+            </p>
+            <p>
+              <q
+                >The support team at PoTech was super helpful when I had
+                questions about my new laptop. Fantastic service from start to
+                finish!</q
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttonsTestimony">
+        <span class="nextTestimony">&#10095;</span>
+        <span class="prevTestimony">&#10094;</span>
+      </div>
+
+      <div class="dotsQContainer">
+        <div class="dotTestimony activeTestimony" attr="0"></div>
+        <div class="dotTestimony" attr="1"></div>
+        <div class="dotTestimony" attr="2"></div>
+        <div class="dotTestimony" attr="3"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      let myCustomerTestimony = document.querySelectorAll(
+        ".my-customer-testimony"
+      );
+      let nextTestimony = document.querySelector(".nextTestimony");
+      let prevTestimony = document.querySelector(".prevTestimony");
+      let dotsTestimony = document.querySelectorAll(".dotTestimony");
+      var counterTestimony = 0;
+
+      // Code for nextTestimony button
+      nextTestimony.addEventListener("click", slideNextTestimony);
+      function slideNextTestimony() {
+        myCustomerTestimony[counterTestimony].style.animation =
+          "nextQ1 0.5s ease-in forwards";
+        if (counterTestimony >= myCustomerTestimony.length - 1) {
+          counterTestimony = 0;
+        } else {
+          counterTestimony++;
+        }
+        myCustomerTestimony[counterTestimony].style.animation =
+          "nextQ2 0.5s ease-in forwards";
+        indicatorsTestimony();
+      }
+
+      // Code for prevTestimony button
+      prevTestimony.addEventListener("click", slidePrevTestimony);
+      function slidePrevTestimony() {
+        myCustomerTestimony[counterTestimony].style.animation =
+          "prevQ1 0.5s ease-in forwards";
+        if (counterTestimony == 0) {
+          counterTestimony = myCustomerTestimony.length - 1;
+        } else {
+          counterTestimony--;
+        }
+        myCustomerTestimony[counterTestimony].style.animation =
+          "prevQ2 0.5s ease-in forwards";
+        indicatorsTestimony();
+      }
+
+      // Auto sliding
+      function autoSlidingTestimony() {
+        deletInterval = setInterval(timer, 10000);
+        function timer() {
+          slideNextTestimony();
+          indicatorsTestimony();
+        }
+      }
+      autoSlidingTestimony();
+
+      // Stop auto sliding when mouse is over
+      const containerTestimony = document.querySelector(
+        ".all-testimony-container"
+      );
+      containerTestimony.addEventListener("mouseover", function () {
+        clearInterval(deletInterval);
+      });
+
+      // Resume sliding when mouse is out
+      containerTestimony.addEventListener("mouseout", autoSlidingTestimony);
+
+      // Add and remove activeTestimony class from the indicatorsTestimony
+      function indicatorsTestimony() {
+        for (i = 0; i < dotsTestimony.length; i++) {
+          dotsTestimony[i].className = dotsTestimony[i].className.replace(
+            " activeTestimony",
+            ""
+          );
+        }
+        dotsTestimony[counterTestimony].className += " activeTestimony";
+      }
+
+      // Add click event to the indicator
+      function switchTestimony(currentTestimony) {
+        currentTestimony.classList.add("activeTestimony");
+        var testimonyId = currentTestimony.getAttribute("attr");
+        if (testimonyId > counterTestimony) {
+          myCustomerTestimony[counterTestimony].style.animation =
+            "nextQ1 0.5s ease-in forwards";
+          counterTestimony = testimonyId;
+          myCustomerTestimony[counterTestimony].style.animation =
+            "nextQ2 0.5s ease-in forwards";
+        } else if (testimonyId == counterTestimony) {
+          return;
+        } else {
+          myCustomerTestimony[counterTestimony].style.animation =
+            "prevQ1 0.5s ease-in forwards";
+          counterTestimony = testimonyId;
+          myCustomerTestimony[counterTestimony].style.animation =
+            "prevQ2 0.5s ease-in forwards";
+        }
+        indicatorsTestimony();
+      }
+      document.querySelectorAll(".dotTestimony").forEach(function (element) {
+        element.addEventListener("click", function () {
+          switchTestimony(this);
+        });
+      });
+    </script>
+  </body>
+</html>
