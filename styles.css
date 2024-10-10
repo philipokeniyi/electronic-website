@@ -1144,7 +1144,7 @@ li:nth-child(1):hover {
 .all-testimony-container {
   position: relative;
   width: 800px;
-  min-height: 450px;
+  height: 450px;
   /* border: 3px solid #ffb300; */
 }
 .all-testimony-container .testimony-container {
